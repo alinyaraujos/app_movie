@@ -1,16 +1,40 @@
-# app_movie
+# <p align="center">Application for viewing the main categories of movies</p>
 
-A new Flutter project.
+- Vídeo:
+<img src="https://github.com/alinyaraujos/app_movie/tree/main/assets/readme/video.gif" height="400px">
 
-## Getting Started
+## Instalação
 
-This project is a starting point for a Flutter application.
+Necessário:
 
-A few resources to get you started if this is your first Flutter project:
+- Git
+- [Flutter](https://flutter.dev)
+- Visual Studio Code ou Android Studio
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Instalação
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+$ git clone git@github.com:alinyaraujos/app_movie.git
+cd app_movie
+code . 
+```
+
+Após abrir o Visual Studio Code, execute:
+```
+$ flutter pub get
+```
+## API de filmes  
+Para ter acesso a API é necessário criar uma conta e gerar uma chave de acesso
+- [The Movie BD](https://www.themoviedb.org/)
+
+
+Após abrir a conta crie dois arquivos de váriaveis de ambiente na raíz do seu projeto: 
+`.env`
+`.env_dev`
+
+E preencha igual ao `.env_example` com as suas informações de acesso 
+
+Após, execute:
+```
+$ flutter run
+```
