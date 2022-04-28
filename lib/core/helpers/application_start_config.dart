@@ -1,5 +1,5 @@
 
-import 'package:view_movie/core/helpers/environments.dart';
+import 'package:app_movie/core/helpers/environments.dart';
 
 class ApplicationStartConfig {
   Future<void> configureApp() async {
