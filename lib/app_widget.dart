@@ -10,7 +10,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       builder: (_) => MaterialApp.router(
-        title: 'View Movie',
+        title: 'App Movie',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
