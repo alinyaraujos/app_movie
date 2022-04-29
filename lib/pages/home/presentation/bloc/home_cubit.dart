@@ -9,8 +9,6 @@ class HomeCubit extends Cubit<HomeState> {
       : _getMovie = getMovie,
         super(const InitHomeState());
 
-  // HomeCubit() : super(const InitHomeState());
-
   Future<void> getMovie() async {
     final nowPlaying = await _getMovie.getMovieNowPlaying();
     final popular = await _getMovie.getMoviePopular();
