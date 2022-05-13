@@ -6,8 +6,6 @@ part of 'movie_remote_data_source.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps
-
 class _MovieRemoteDataSource implements MovieRemoteDataSource {
   _MovieRemoteDataSource(this._dio, {this.baseUrl});
 
@@ -16,9 +14,12 @@ class _MovieRemoteDataSource implements MovieRemoteDataSource {
   String? baseUrl;
 
   @override
-  Future<ResultMovieGetResponse> getMovieNowPlaying(apiKey) async {
+  Future<ResultMovieGetResponse> getMovieNowPlaying(apiKey, page) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'api_key': apiKey};
+    final queryParameters = <String, dynamic>{
+      r'api_key': apiKey,
+      r'page': page
+    };
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -32,9 +33,12 @@ class _MovieRemoteDataSource implements MovieRemoteDataSource {
   }
 
   @override
-  Future<ResultMovieGetResponse> getMoviePopular(apiKey) async {
+  Future<ResultMovieGetResponse> getMoviePopular(apiKey, page) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'api_key': apiKey};
+    final queryParameters = <String, dynamic>{
+      r'api_key': apiKey,
+      r'page': page
+    };
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -48,9 +52,12 @@ class _MovieRemoteDataSource implements MovieRemoteDataSource {
   }
 
   @override
-  Future<ResultMovieGetResponse> getMovieTopRated(apiKey) async {
+  Future<ResultMovieGetResponse> getMovieTopRated(apiKey, page) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'api_key': apiKey};
+    final queryParameters = <String, dynamic>{
+      r'api_key': apiKey,
+      r'page': page
+    };
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -64,9 +71,12 @@ class _MovieRemoteDataSource implements MovieRemoteDataSource {
   }
 
   @override
-  Future<ResultMovieGetResponse> getMovieUpcoming(apiKey) async {
+  Future<ResultMovieGetResponse> getMovieUpcoming(apiKey, page) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'api_key': apiKey};
+    final queryParameters = <String, dynamic>{
+      r'api_key': apiKey,
+      r'page': page
+    };
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(

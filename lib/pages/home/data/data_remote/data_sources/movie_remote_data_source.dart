@@ -15,23 +15,27 @@ abstract class MovieRemoteDataSource {
   @Header('Content-Type: application/json')
   Future<ResultMovieGetResponse> getMovieNowPlaying(
     @Query('api_key') String apiKey,
+    @Query('page') int page,
   );
 
   @GET('/movie/popular')
   @Header('Content-Type: application/json')
   Future<ResultMovieGetResponse> getMoviePopular(
     @Query('api_key') String apiKey,
+    @Query('page') int page,
   );
 
   @GET('/movie/top_rated')
   @Header('Content-Type: application/json')
   Future<ResultMovieGetResponse> getMovieTopRated(
     @Query('api_key') String apiKey,
+    @Query('page') int page,
   );
 
   @GET('/movie/upcoming')
   @Header('Content-Type: application/json')
   Future<ResultMovieGetResponse> getMovieUpcoming(
     @Query('api_key') String apiKey,
+    @Query('page') int page,
   );
 }
