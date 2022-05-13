@@ -37,23 +37,23 @@ void main() {
       act: (cubit) => cubit.getMovie(),
       setUp: () {
         when(
-          () => getMovieUseCase.getMoviePopular(),
+          () => getMovieUseCase.getMoviePopular(1),
         ).thenAnswer((_) async => resultMovieMock);
         when(
-          () => getMovieUseCase.getMovieNowPlaying(),
+          () => getMovieUseCase.getMovieNowPlaying(1),
         ).thenAnswer((_) async => resultMovieMock);
         when(
-          () => getMovieUseCase.getMovieTopRated(),
+          () => getMovieUseCase.getMovieTopRated(1),
         ).thenAnswer((_) async => resultMovieMock);
         when(
-          () => getMovieUseCase.getMovieUpcoming(),
+          () => getMovieUseCase.getMovieUpcoming(1),
         ).thenAnswer((_) async => resultMovieMock);
       },
       verify: (_) {
-        verify(() => getMovieUseCase.getMovieNowPlaying()).called(1);
-        verify(() => getMovieUseCase.getMoviePopular()).called(1);
-        verify(() => getMovieUseCase.getMovieTopRated()).called(1);
-        verify(() => getMovieUseCase.getMovieUpcoming()).called(1);
+        verify(() => getMovieUseCase.getMovieNowPlaying(1)).called(1);
+        verify(() => getMovieUseCase.getMoviePopular(1)).called(1);
+        verify(() => getMovieUseCase.getMovieTopRated(1)).called(1);
+        verify(() => getMovieUseCase.getMovieUpcoming(1)).called(1);
       },
       expect: () => [isA<LoadedHomeState>()]);
 }
