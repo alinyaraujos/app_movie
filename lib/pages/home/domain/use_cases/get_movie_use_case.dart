@@ -2,10 +2,10 @@ import 'package:app_movie/pages/home/domain/entities/result_movie.dart';
 import 'package:app_movie/pages/home/domain/repositories/movie_repository.dart';
 
 abstract class GetMovieUseCase {
-  Future<ResultMovie> getMovieNowPlaying();
-  Future<ResultMovie> getMoviePopular();
-  Future<ResultMovie> getMovieTopRated();
-  Future<ResultMovie> getMovieUpcoming();
+  Future<ResultMovie> getMovieNowPlaying(int page);
+  Future<ResultMovie> getMoviePopular(int page);
+  Future<ResultMovie> getMovieTopRated(int page);
+  Future<ResultMovie> getMovieUpcoming(int page);
 }
 
 class GetMovieUseCaseImpl implements GetMovieUseCase {
@@ -15,22 +15,22 @@ class GetMovieUseCaseImpl implements GetMovieUseCase {
       : _repository = repository;
 
   @override
-  Future<ResultMovie> getMovieNowPlaying() {
-    return _repository.getMovieNowPlaying();
+  Future<ResultMovie> getMovieNowPlaying(int page) {
+    return _repository.getMovieNowPlaying(page);
   }
 
   @override
-  Future<ResultMovie> getMoviePopular() {
-    return _repository.getMoviePopular();
+  Future<ResultMovie> getMoviePopular(int page) {
+    return _repository.getMoviePopular(page);
   }
 
   @override
-  Future<ResultMovie> getMovieTopRated() {
-    return _repository.getMovieTopRated();
+  Future<ResultMovie> getMovieTopRated(int page) {
+    return _repository.getMovieTopRated(page);
   }
 
   @override
-  Future<ResultMovie> getMovieUpcoming() {
-    return _repository.getMovieUpcoming();
+  Future<ResultMovie> getMovieUpcoming(int page) {
+    return _repository.getMovieUpcoming(page);
   }
 }

@@ -5,7 +5,7 @@ class ResultMovie {
   final int totalPages;
   final List<Movie> results;
 
-  ResultMovie({
+  const ResultMovie({
     required this.page,
     required this.totalPages,
     required this.results,

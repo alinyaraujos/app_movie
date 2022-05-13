@@ -6,15 +6,15 @@ part 'movie_get_response.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class MovieGetResponse {
   final String title;
-  final String posterPath;
   final String overview;
   final double voteAverage;
+  final String? posterPath;
 
   const MovieGetResponse({
     required this.title,
-    required this.posterPath,
     required this.overview,
     required this.voteAverage,
+    this.posterPath,
   });
 
   factory MovieGetResponse.fromJson(Map<String, dynamic> json) =>
@@ -24,9 +24,9 @@ class MovieGetResponse {
   Movie mapToEntity() {
     return Movie(
       title: title,
-      posterPath: posterPath,
       overview: overview,
       voteAverage: voteAverage,
+      posterPath: posterPath,
     );
   }
 }

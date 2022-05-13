@@ -11,33 +11,33 @@ class MovieRepositoryImpl implements MovieRepository {
   }) : _dataSource = dataSource;
 
   @override
-  Future<ResultMovie> getMovieNowPlaying() async {
+  Future<ResultMovie> getMovieNowPlaying(int page) async {
     final apiKey = Environments.param('api_key') ?? '';
-    final result = await _dataSource.getMovieNowPlaying(apiKey);
+    final result = await _dataSource.getMovieNowPlaying(apiKey, page);
 
     return result.mapToEntity();
   }
 
   @override
-  Future<ResultMovie> getMoviePopular() async {
+  Future<ResultMovie> getMoviePopular(int page) async {
     final apiKey = Environments.param('api_key') ?? '';
-    final result = await _dataSource.getMoviePopular(apiKey);
+    final result = await _dataSource.getMoviePopular(apiKey, page);
 
     return result.mapToEntity();
   }
 
   @override
-  Future<ResultMovie> getMovieTopRated() async {
+  Future<ResultMovie> getMovieTopRated(int page) async {
     final apiKey = Environments.param('api_key') ?? '';
-    final result = await _dataSource.getMovieTopRated(apiKey);
+    final result = await _dataSource.getMovieTopRated(apiKey, page);
 
     return result.mapToEntity();
   }
 
   @override
-  Future<ResultMovie> getMovieUpcoming() async {
+  Future<ResultMovie> getMovieUpcoming(int page) async {
     final apiKey = Environments.param('api_key') ?? '';
-    final result = await _dataSource.getMovieUpcoming(apiKey);
+    final result = await _dataSource.getMovieUpcoming(apiKey, page);
 
     return result.mapToEntity();
   }

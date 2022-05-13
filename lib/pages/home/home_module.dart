@@ -12,12 +12,9 @@ class HomeModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.factory<MovieRemoteDataSource>(
-        (i) => MovieRemoteDataSource(DioRestClient.getDioCliente()),
-        export: true),
-    Bind.factory<MovieRepository>((i) => MovieRepositoryImpl(dataSource: i()),
-        export: true),
-    Bind.factory<GetMovieUseCase>((i) => GetMovieUseCaseImpl(repository: i()),
-        export: true),
+        (i) => MovieRemoteDataSource(DioRestClient.getDioCliente())),
+    Bind.factory<MovieRepository>((i) => MovieRepositoryImpl(dataSource: i())),
+    Bind.factory<GetMovieUseCase>((i) => GetMovieUseCaseImpl(repository: i())),
     Bind.singleton<HomeCubit>((i) => HomeCubit(getMovie: i()))
   ];
 
