@@ -9,15 +9,15 @@ part of 'movie_get_response.dart';
 MovieGetResponse _$MovieGetResponseFromJson(Map<String, dynamic> json) =>
     MovieGetResponse(
       title: json['title'] as String,
-      posterPath: json['poster_path'] as String,
       overview: json['overview'] as String,
       voteAverage: (json['vote_average'] as num).toDouble(),
+      posterPath: json['poster_path'] as String?,
     );
 
 Map<String, dynamic> _$MovieGetResponseToJson(MovieGetResponse instance) =>
     <String, dynamic>{
       'title': instance.title,
-      'poster_path': instance.posterPath,
       'overview': instance.overview,
       'vote_average': instance.voteAverage,
+      'poster_path': instance.posterPath,
     };

@@ -49,11 +49,13 @@ class DetailsMoviePage extends StatelessWidget {
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
                 ),
-                child: Image.network(
-                  '${Environments.param('base_url_image')}/${movie.posterPath}',
-                  width: double.maxFinite,
-                  fit: BoxFit.cover,
-                ),
+                child: movie.posterPath != null
+                    ? Image.network(
+                        '${Environments.param('base_url_image')}/${movie.posterPath}',
+                        width: double.maxFinite,
+                        fit: BoxFit.cover,
+                      )
+                    : const SizedBox.shrink(),
               ),
             ),
           ),
