@@ -22,113 +22,137 @@ class HomePage extends StatelessWidget {
       create: (context) => _homeCubit,
       child: Scaffold(
         backgroundColor: AppColors.blue,
-        body: CustomScrollView(
-          physics: const ClampingScrollPhysics(),
-          slivers: [
-            SliverAppBar(
-              pinned: true,
-              floating: false,
-              automaticallyImplyLeading: false,
-              backgroundColor: AppColors.lightBlue,
-              expandedHeight: 200.h,
-              flexibleSpace: const FlexibleSpaceBar(
-                collapseMode: CollapseMode.parallax,
-                background: SearchMovie(),
-                titlePadding: EdgeInsets.zero,
-              ),
-              elevation: 0,
-              titleSpacing: 0,
-              bottom: PreferredSize(
-                preferredSize: const Size.fromHeight(20),
-                child: Column(
-                  children: [
-                    Container(
-                      height: 20.h,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
+        body: Builder(
+          builder: (BuildContext contextBloc) {
+            return CustomScrollView(
+              physics: const ClampingScrollPhysics(),
+              slivers: [
+                SliverAppBar(
+                  pinned: true,
+                  floating: false,
+                  automaticallyImplyLeading: false,
+                  backgroundColor: AppColors.lightBlue,
+                  expandedHeight: 200.h,
+                  flexibleSpace: const FlexibleSpaceBar(
+                    collapseMode: CollapseMode.parallax,
+                    background: SearchMovie(),
+                    titlePadding: EdgeInsets.zero,
+                  ),
+                  elevation: 0,
+                  titleSpacing: 0,
+                  bottom: PreferredSize(
+                    preferredSize: const Size.fromHeight(20),
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 20.h,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20),
+                            ),
+                            color: AppColors.blue,
+                          ),
                         ),
-                        color: AppColors.blue,
-                      ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  const SizedBox(height: 38),
-                  SessionTitle(
-                    title: 'Em cartaz'.toUpperCase(),
+                SliverToBoxAdapter(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 38),
+                      SessionTitle(
+                        title: 'Em cartaz'.toUpperCase(),
+                      ),
+                      SizedBox(
+                        height: 250.h,
+                        child: BlocBuilder<HomeCubit, HomeState>(
+                          bloc: Modular.get(),
+                          builder: (_, state) {
+                            return (state is LoadedHomeState)
+                                ? ListMovieTile(
+                                    onEndOfPage: () {
+                                      ReadContext(contextBloc)
+                                          .read<HomeCubit>()
+                                          .getMovieNowPlaying();
+                                    },
+                                    movies: state.nowPlaying.results,
+                                  )
+                                : const SizedBox.shrink();
+                          },
+                        ),
+                      ),
+                      // const SizedBox(height: 20),
+                      SessionTitle(
+                        title: 'Populares'.toUpperCase(),
+                      ),
+                      SizedBox(
+                        height: 250.h,
+                        child: BlocBuilder<HomeCubit, HomeState>(
+                          bloc: Modular.get(),
+                          builder: (_, state) {
+                            return (state is LoadedHomeState)
+                                ? ListMovieTile(
+                                    onEndOfPage: () {
+                                      ReadContext(contextBloc)
+                                          .read<HomeCubit>()
+                                          .getMoviePopular();
+                                    },
+                                    movies: state.popular.results,
+                                  )
+                                : const SizedBox.shrink();
+                          },
+                        ),
+                      ),
+                      SessionTitle(
+                        title: 'Melhores avaliados'.toUpperCase(),
+                      ),
+                      SizedBox(
+                        height: 250.h,
+                        child: BlocBuilder<HomeCubit, HomeState>(
+                          bloc: Modular.get(),
+                          builder: (_, state) {
+                            return (state is LoadedHomeState)
+                                ? ListMovieTile(
+                                    onEndOfPage: () {
+                                      ReadContext(contextBloc)
+                                          .read<HomeCubit>()
+                                          .getMovieTopRated();
+                                    },
+                                    movies: state.topRated.results,
+                                  )
+                                : const SizedBox.shrink();
+                          },
+                        ),
+                      ),
+                      SessionTitle(
+                        title: 'Em breve'.toUpperCase(),
+                      ),
+                      SizedBox(
+                        height: 250.h,
+                        child: BlocBuilder<HomeCubit, HomeState>(
+                          bloc: Modular.get(),
+                          builder: (_, state) {
+                            return (state is LoadedHomeState)
+                                ? ListMovieTile(
+                                    onEndOfPage: () {
+                                      ReadContext(contextBloc)
+                                          .read<HomeCubit>()
+                                          .getMovieUpComing();
+                                    },
+                                    movies: state.upcoming.results,
+                                  )
+                                : const SizedBox.shrink();
+                          },
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: 250.h,
-                    child: BlocBuilder<HomeCubit, HomeState>(
-                      bloc: Modular.get(),
-                      builder: (_, state) {
-                        return (state is LoadedHomeState)
-                            ? ListMovieTile(
-                                movies: state.nowPlaying,
-                              )
-                            : const SizedBox.shrink();
-                      },
-                    ),
-                  ),
-                  // const SizedBox(height: 20),
-                  SessionTitle(
-                    title: 'Populares'.toUpperCase(),
-                  ),
-                  SizedBox(
-                    height: 250.h,
-                    child: BlocBuilder<HomeCubit, HomeState>(
-                      bloc: Modular.get(),
-                      builder: (_, state) {
-                        return (state is LoadedHomeState)
-                            ? ListMovieTile(
-                                movies: state.popular,
-                              )
-                            : const SizedBox.shrink();
-                      },
-                    ),
-                  ),
-                  SessionTitle(
-                    title: 'Melhores avaliados'.toUpperCase(),
-                  ),
-                  SizedBox(
-                    height: 250.h,
-                    child: BlocBuilder<HomeCubit, HomeState>(
-                      bloc: Modular.get(),
-                      builder: (_, state) {
-                        return (state is LoadedHomeState)
-                            ? ListMovieTile(
-                                movies: state.topRated,
-                              )
-                            : const SizedBox.shrink();
-                      },
-                    ),
-                  ),
-                  SessionTitle(
-                    title: 'Em breve'.toUpperCase(),
-                  ),
-                  SizedBox(
-                    height: 250.h,
-                    child: BlocBuilder<HomeCubit, HomeState>(
-                      bloc: Modular.get(),
-                      builder: (_, state) {
-                        return (state is LoadedHomeState)
-                            ? ListMovieTile(
-                                movies: state.upcoming,
-                              )
-                            : const SizedBox.shrink();
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
