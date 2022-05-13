@@ -27,7 +27,6 @@ $ flutter pub get
 Para ter acesso a API é necessário criar uma conta e gerar uma chave de acesso
 - [The Movie BD](https://www.themoviedb.org/)
 
-
 Após abrir a conta crie dois arquivos de váriaveis de ambiente na raíz do seu projeto: 
 `.env`
 `.env_dev`
@@ -38,3 +37,7 @@ Após, execute:
 ```
 $ flutter run
 ```
+
+## Design 
+Adpatado ao thamplate 
+- [Movies](https://www.uplabs.com/posts/movies-e0f9c1ea-a644-4666-857b-10933c4089ca)
