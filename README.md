@@ -1,7 +1,7 @@
 # <p align="center">Application for viewing the main categories of movies</p>
 
 - Vídeo:
-<img src="https://github.com/alinyaraujos/app_movie/blob/main/assets/readme/video.gif" height="400px">
+<img src="https://github.com/alinyaraujos/app_movie/blob/main/assets/readme/video2.gif" height="400px">
 
 ## Instalação
 
